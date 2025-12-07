@@ -45,7 +45,6 @@ BloodPressure_box = train['BloodPressure']
 sns.boxplot(y=BloodPressure_box)
 plt.ylabel('BloodPressure')
 plt.title('Outlier Detection of BloodPressure')
-plt.show()
 
 
 def categorize_blood_pressure(bp):
@@ -85,6 +84,11 @@ X_test["SkinThickness"] = X_test["SkinThickness"].replace(0,SkinThickness_median
 X_test["Insulin"] = X_test["Insulin"].replace(0,Insulin_median)
 X_test["BMI"] = X_test["BMI"].replace(0,BMI_median)
 
+plt.figure(figsize=(6,4))
+glucose_hist = X_train["Glucose"]
+sns.histplot(x=glucose_hist)
+plt.title("Distribution of Glucose Levels(After Removing Invalid Zero Entries)")
+plt.show()
 
 numeric_columns = ["Pregnancies", "Glucose","SkinThickness", "Insulin", "BMI", "DiabetesPedigreeFunction","Age"]
 scaler = StandardScaler()
